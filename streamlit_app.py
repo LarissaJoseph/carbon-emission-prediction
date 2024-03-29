@@ -56,7 +56,7 @@ st.write("How Often Do You Shower?: ", How_often_shower)
 
 # first argument takes the titleof the selectionbox
 # second argument takes options
-Heating = st.selectbox("Your Hme HEating Source: ",
+Heating = st.selectbox("Your Home Heating Source: ",
 					['Coal', 'Natural Gas', 'Wood', 'Electricity'])
 
 # print the selected hobby
@@ -83,7 +83,7 @@ st.write("How Often Do You Participate In Social Activities?: ", Social)
 
 # first argument takes the titleof the selectionbox
 # second argument takes options
-Waste_size = st.selectbox("Waste Bag Size: ",
+Waste_Size = st.selectbox("Waste Bag Size: ",
 					['Small', 'Medium', 'Large', 'Extra Large'])
 
 # print the selected hobby
