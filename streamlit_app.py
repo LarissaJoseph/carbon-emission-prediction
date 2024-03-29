@@ -170,7 +170,7 @@ Recyc = st.multiselect("What Do You Recycle?: ",
 						['Nothing', 'Paper', 'Metal', 'Glass', 'Plastic'])
 
 # write the selected options
-st.write("You selected", len(Recyc), 'What Do You Recycle With?')
+st.write("You selected", (Recyc))
 # multi select box
 
 # first argument takes the box title
@@ -179,7 +179,7 @@ Cook_With = st.multiselect("What Do You Use to Cook? ",
 						['Microwave', 'Oven', ''])
 
 # write the selected options
-st.write("You cook with", len(Cook_With), 'What Do You Use to Cook?')
+st.write("You cook with", (Cook_With))
 
 
 
