@@ -107,7 +107,8 @@ Car_Dist = st.slider("Montly Distance(km) By car ", 0, 9999)
 # print the level
 # format() is used to print value 
 # of a variable at a specific position
-st.text('Selected: {}'.format(level))
+st.text('Selected: {}'.format(Car_Dist))
+
 
 
 
