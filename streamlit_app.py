@@ -25,15 +25,16 @@ if (status == 'Male'):
 else:
 	st.success("Female")
 
-# multi select box
+# Selection box
 
-# first argument takes the box title
-# second argument takes the options to show
-Body_Type = st.multiselect("Body Type: ",
-						['Underweight', 'Normal', 'Overweight', 'Obese'])
+# first argument takes the titleof the selectionbox
+# second argument takes options
+Body_Type = st.selectbox("Body Type: ",
+					['Underweight', 'Normal', 'Overweight', 'Obese'])
 
-# write the selected options
-st.write("You selected", len(Body_Type), 'Body Type')
+# print the selected hobby
+st.write("Body Type: ", Body_Type)
+
 
 # -----------------------------------------------------------------------------
 # Declare some useful functions.
