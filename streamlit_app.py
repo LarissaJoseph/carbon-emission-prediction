@@ -9,7 +9,7 @@ st.set_page_config(
     page_icon=':earth_americas:',	
 )# This is an emoji shortcode. Could be a URL too.
 
-	st.title('Carbon Emission Predictor App')
+st.title('Carbon Emission Predictor App')
 
 
 # radio button
