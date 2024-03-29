@@ -34,6 +34,81 @@ Body_Type = st.selectbox("Body Type: ",
 
 # print the selected hobby
 st.write("Body Type: ", Body_Type)
+# Selection box
+
+# first argument takes the titleof the selectionbox
+# second argument takes options
+Diet = st.selectbox("Diet: ",
+					['Omnivore', 'Vegetarian', 'Pescatarian', 'Vegan'])
+
+# print the selected hobby
+st.write("Diet: ", Diet)
+# Selection box
+
+# first argument takes the titleof the selectionbox
+# second argument takes options
+How_often_shower = st.selectbox("How Often Do You Shower?: ",
+					['Daily', 'Less Frequently', 'More Frequently', 'Twice A Day'])
+
+# print the selected hobby
+st.write("How Often Do You Shower?: ", How_often_shower)
+# Selection box
+
+# first argument takes the titleof the selectionbox
+# second argument takes options
+Heating = st.selectbox("Your Hme HEating Source: ",
+					['Coal', 'Natural Gas', 'Wood', 'Electricity'])
+
+# print the selected hobby
+st.write("Your Home Heating Source: ", Heating)
+# Selection box
+
+# first argument takes the titleof the selectionbox
+# second argument takes options
+Trans = st.selectbox("What Is Your Main Means of Transportation?: ",
+					['Public', 'Walk/Bicycle', 'Private'])
+
+# print the selected hobby
+st.write("What Is Your Main Means Of Transport?: ", Trans)
+# Selection box
+
+# first argument takes the titleof the selectionbox
+# second argument takes options
+Social = st.selectbox("How Often Do You Participate In Social Activities?: ",
+					['Often', 'Never', 'Sometimes'])
+
+# print the selected hobby
+st.write("How Often Do You Participate In Social Activities?: ", Social)
+# Selection box
+
+# first argument takes the titleof the selectionbox
+# second argument takes options
+Waste_size = st.selectbox("Waste Bag Size: ",
+					['Small', 'Medium', 'Large', 'Extra Large'])
+
+# print the selected hobby
+st.write("Your Home Primiarily uses : ", Waste_Size)
+# Selection box
+
+# first argument takes the titleof the selectionbox
+# second argument takes options
+Air = st.selectbox("Frequency of using aircraft in the last month.: ",
+					['Frequently', 'Rarely', 'Never', 'Very Frequently'])
+
+# print the selected hobby
+st.write("Frequency of using aircraft in the last month.: ", Air )
+# slider
+
+# first argument takes the title of the slider
+# second argument takes the starting of the slider
+# last argument takes the end number
+Car_Dist = st.slider("Montly Distance(km) By car ", 0, 9999)
+
+# print the level
+# format() is used to print value 
+# of a variable at a specific position
+st.text('Selected: {}'.format(level))
+
 
 
 # -----------------------------------------------------------------------------
