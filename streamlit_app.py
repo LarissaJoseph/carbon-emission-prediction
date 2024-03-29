@@ -3,13 +3,14 @@ import pandas as pd
 import math
 from pathlib import Path
 
-st.title('Carbon Emission Predictor App')
-
 # Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
     page_title='Carbon Emission Predictor',
     page_icon=':earth_americas:', # This is an emoji shortcode. Could be a URL too.
-)
+
+	st.title('Carbon Emission Predictor App')
+
+
 # radio button
 # first argument is the title of the radio button
 # second argument is the options for the radio button
