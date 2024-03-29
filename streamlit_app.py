@@ -30,4 +30,6 @@ def get_data():
     csv_url = "https://raw.githubusercontent.com/shawnburris98/carbonfootprint/main/Carbon%20Emission.csv"
     df = pd.read_csv(csv_url)
 
+
+
    
