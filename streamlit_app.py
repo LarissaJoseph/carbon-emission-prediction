@@ -180,6 +180,17 @@ Cook_With = st.multiselect("What Do You Use to Cook? ",
 
 # write the selected options
 st.write("You cook with", len(Cook_With)) 
+# slider
+
+# first argument takes the title of the slider
+# second argument takes the starting of the slider
+# last argument takes the end number
+Bill = st.slider("Montly Grocery Bill", 50, 299)
+
+# print the level
+# format() is used to print value 
+# of a variable at a specific position
+st.text('Selected: {}'.format(Bill))
 
 
 
