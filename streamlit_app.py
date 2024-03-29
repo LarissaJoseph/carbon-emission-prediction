@@ -109,6 +109,87 @@ Car_Dist = st.slider("Montly Distance(km) By car ", 0, 9999)
 # of a variable at a specific position
 st.text('Selected: {}'.format(Car_Dist))
 
+# slider
+
+# first argument takes the title of the slider
+# second argument takes the starting of the slider
+# last argument takes the end number
+Waste = st.slider("Waste Bags Weekly", 1, 7)
+
+# print the level
+# format() is used to print value 
+# of a variable at a specific position
+st.text('Selected: {}'.format(Waste))
+# slider
+
+# first argument takes the title of the slider
+# second argument takes the starting of the slider
+# last argument takes the end number
+How_longtv = st.slider("Number Of Daily Hours You Spend Infront Of The TV or Monitor", 1, 24)
+
+# print the level
+# format() is used to print value 
+# of a variable at a specific position
+st.text('Selected: {}'.format(How_longtv))
+# slider
+
+# first argument takes the title of the slider
+# second argument takes the starting of the slider
+# last argument takes the end number
+Newclothes = st.slider("New Clothes Montly", 0,50 )
+
+# print the level
+# format() is used to print value 
+# of a variable at a specific position
+st.text('Selected: {}'.format(Newclothes))
+# slider
+
+# first argument takes the title of the slider
+# second argument takes the starting of the slider
+# last argument takes the end number
+Internet = st.slider("Daily Hours Spent On Internet", 0, 24)
+
+# print the level
+# format() is used to print value 
+# of a variable at a specific position
+st.text('Selected: {}'.format(Internet))
+# Selection box
+
+# first argument takes the titleof the selectionbox
+# second argument takes options
+EnergyEff = st.selectbox("Are Your Purchases Energy Efficient? ",
+					['Yes', 'No', 'Sometimes'])
+
+# print the selected hobby
+st.write("You Are Energy Aware", EnergyEff) 
+# Selection box
+
+# first argument takes the titleof the selectionbox
+# second argument takes options
+ = st.selectbox("Hobbies: ",
+					['Dancing', 'Reading', 'Sports'])
+
+# print the selected hobby
+st.write("Your hobby is: ", hobby)
+# multi select box
+
+# first argument takes the box title
+# second argument takes the options to show
+Recyc = st.multiselect("What Do You Recycle?: ",
+						['Nothing', 'Paper', 'Metal', 'Glass', 'Plastic'])
+
+# write the selected options
+st.write("You selected", len(Recyc), 'What Do You Recycle With?')
+# multi select box
+
+# first argument takes the box title
+# second argument takes the options to show
+Cook_With = st.multiselect("What Do You Use to Cook? ",
+						['Microwave', 'Oven', ''])
+
+# write the selected options
+st.write("You cook with", len(Cook_With), 'What Do You Use to Cook?')
+
 
 
 
