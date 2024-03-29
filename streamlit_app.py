@@ -164,15 +164,6 @@ EnergyEff = st.selectbox("Are Your Purchases Energy Efficient? ",
 st.write("You Are Energy Aware", EnergyEff) 
 # Selection box
 
-# first argument takes the titleof the selectionbox
-# second argument takes options
- = st.selectbox("Hobbies: ",
-					['Dancing', 'Reading', 'Sports'])
-
-# print the selected hobby
-st.write("Your hobby is: ", hobby)
-# multi select box
-
 # first argument takes the box title
 # second argument takes the options to show
 Recyc = st.multiselect("What Do You Recycle?: ",
