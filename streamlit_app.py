@@ -190,7 +190,7 @@ Bill = st.slider("Montly Grocery Bill", 50, 299)
 # print the level
 # format() is used to print value 
 # of a variable at a specific position
-st.text('Selected: {}'.format(Bill), '$')
+st.text('Selected: {}$'.format(Bill), )
 
 
 
