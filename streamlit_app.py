@@ -306,3 +306,4 @@ predicted_carbon_emission=linear_model.predict([['Body Type', 'Sex', 'Diet', 'Ho
        'transport_numerical', 'socialAct_numerical',
        'energy efficiency_ numerical', 'travelingByAir_numerical',
        'recycling_numerical', 'wasteBag_numerical', 'cookingWith_numerical']])
+jhjh
