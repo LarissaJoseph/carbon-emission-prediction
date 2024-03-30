@@ -3,6 +3,19 @@ import pandas as pd
 import math
 from pathlib import Path
 
+import seaborn as sns
+import numpy as np
+
+import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+from scipy import stats
+from sklearn import metrics
+from sklearn.cluster import KMeans
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+
 # Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
     page_title='Carbon Emission Predictor',
