@@ -107,7 +107,7 @@ Car_Dist = st.slider("Montly Distance(km) By car ", 0, 9999)
 # print the level
 # format() is used to print value 
 # of a variable at a specific position
-st.text('Selected: {}'.format(Car_Dist))
+st.text('Selected: {}KM'.format(Car_Dist))
 
 # slider
 
@@ -130,7 +130,7 @@ How_longtv = st.slider("Number Of Daily Hours You Spend Infront Of The TV or Mon
 # print the level
 # format() is used to print value 
 # of a variable at a specific position
-st.text('Selected: {}'.format(How_longtv))
+st.text('Selected: {}Hours'.format(How_longtv))
 # slider
 
 # first argument takes the title of the slider
@@ -152,7 +152,7 @@ Internet = st.slider("Daily Hours Spent On Internet", 0, 24)
 # print the level
 # format() is used to print value 
 # of a variable at a specific position
-st.text('Selected: {}'.format(Internet))
+st.text('Selected: {} Hours'.format(Internet))
 # Selection box
 
 # first argument takes the titleof the selectionbox
