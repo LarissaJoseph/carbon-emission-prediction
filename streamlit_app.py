@@ -2,13 +2,10 @@ import streamlit as st
 import pandas as pd
 import math
 from pathlib import Path
-
 import seaborn as sns
 import numpy as np
-
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
-
 from scipy import stats
 from sklearn import metrics
 from sklearn.cluster import KMeans
@@ -224,9 +221,88 @@ def get_data():
     #DATA_FILENAME = Path(__file__).parent/'data/gdp_data.csv'
     #raw_gdp_df = pd.read_csv(DATA_FILENAME)
 
-    csv_url = "https://raw.githubusercontent.com/shawnburris98/carbonfootprint/main/Carbon%20Emission.csv"
-    df = pd.read_csv(csv_url)
+    #csv_url = "https://raw.githubusercontent.com/shawnburris98/carbonfootprint/main/Carbon%20Emission.csv"
+
+	
+csv_url = './Carbon_Emission.csv'
+df = pd.read_csv(csv_url)
+
+#display the data
+st.write(df)
+
+#deleting the column that has missing values
+df. __delitem__('Vehicle Type')
+
+# Encode(changing categorical values to numerical values)
+df['recycling_encode'] = LabelEncoder().fit_transform(df['Recycling'])
+df['travelingByAir_encode'] = LabelEncoder().fit_transform(df['Frequency of Traveling by Air'])
+df['howOftenShower_encode'] = LabelEncoder().fit_transform(df['How Often Shower'])
+df['heating_encode'] = LabelEncoder().fit_transform(df['Heating Energy Source'])
+df['bodytype_encode'] = LabelEncoder().fit_transform(df['Body Type'])
+df['sex_encode'] = LabelEncoder().fit_transform(df['Sex'])
+df['diet_encode'] = LabelEncoder().fit_transform(df['Diet'])
+df['transport_encode'] = LabelEncoder().fit_transform(df['Transport'])
+df['socialAct_encode'] = LabelEncoder().fit_transform(df['Social Activity'])
+df['energyEfficiency_encode'] = LabelEncoder().fit_transform(df['Energy efficiency'])
+df['wasteBag_encode'] = LabelEncoder().fit_transform(df['Waste Bag Size'])
+df['cookingWith_encode'] = LabelEncoder().fit_transform(df['Cooking_With'])
+# Transform the 'carbon emission' variable using Box-Cox transformation
+df['carbonEmission_transform'] = stats.boxcox(df['CarbonEmission'])[0]
+
+# Define X (features) and y (target) and remove duplicate features that will not be used in the model
+X = df.drop(['Body Type', 'Sex', 'Diet', 'How Often Shower', 'Heating Energy Source',
+       'Transport', 'Social Activity',
+       'Frequency of Traveling by Air',
+       'Waste Bag Size','Energy efficiency', 'Recycling', 'Cooking_With', 'CarbonEmission',
+             'carbonEmission_transform'], axis=1)
+y = df['carbonEmission_transform']
+
+# Split the dataset into X_train, X_test, y_train, and y_test, 10% of the data for testing
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=0)
+
+# Instantiate a linear regression model
+linear_model = LinearRegression()
+# Fit the model using the training data
+linear_model.fit(X_train, y_train)
+# For each record in the test set, predict the y value (transformed value of charges)
+# The predicted values are stored in the y_pred array
+y_pred = linear_model.predict(X_test)
 
 
+st.write('Predict your own Carbon Emission')
 
-   
+df
+
+#Body Type
+if  Body_Type== "underweight":
+	bodytype_encode = 0
+elif Body_Type== "normal":
+    bodytype_encode = 1
+elif Body_Type== "overweight":
+    bodytype_encode = 2
+   #for obese
+else:
+    bodytype_encode = 3
+
+#Sex    
+if status == "Male":
+      sex_encode=1
+else:
+      sex_encode=0
+
+#recycling 
+#recycling_encode = 1 if Recyc ==  '[Glass]'
+
+st.write('Predicted Carbon Emission: ', )
+
+predicted_carbon_emission=linear_model.predict([['Body Type', 'Sex', 'Diet', 'How Often Shower', 'Heating Energy Source',
+       'Transport', 'Social Activity', 'Monthly Grocery Bill',
+       'Frequency of Traveling by Air', 'Vehicle Monthly Distance Km',
+       'Waste Bag Size', 'Waste Bag Weekly Count', 'How Long TV PC Daily Hour',
+       'How Many New Clothes Monthly', 'How Long Internet Daily Hour',
+       'Energy efficiency', 'Recycling', 'Cooking_With',
+       'bodyType_numerical', 'sex_numerical', 'diet_numerical',
+       'how_often_shower_numerical', 'heating_numerical',
+       'transport_numerical', 'socialAct_numerical',
+       'energy efficiency_ numerical', 'travelingByAir_numerical',
+       'recycling_numerical', 'wasteBag_numerical', 'cookingWith_numerical']])

@@ -1,2 +1,5 @@
 streamlit-nightly
 pandas
+seaborn
+scipy
+scikit-learn
