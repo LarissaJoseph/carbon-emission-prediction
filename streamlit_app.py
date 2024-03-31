@@ -12,6 +12,8 @@ from sklearn.cluster import KMeans
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+from scipy.special import inv_boxcox
+from scipy.stats import boxcox_normplot
 
 # Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
@@ -174,22 +176,7 @@ EnergyEff = st.selectbox("Are Your Purchases Energy Efficient? ",
 st.write("You Are Energy Aware", EnergyEff) 
 # Selection box
 
-# first argument takes the box title
-# second argument takes the options to show
-Recyc = st.multiselect("What Do You Recycle?: ",
-						['Nothing', 'Paper', 'Metal', 'Glass', 'Plastic'])
 
-# write the selected options
-st.write("You selected", len(Recyc))
-# multi select box
-
-# first argument takes the box title
-# second argument takes the options to show
-Cook_With = st.multiselect("What Do You Use to Cook? ",
-						['Microwave', 'Oven', 'Stove', 'Grill', 'AirFryer', '' ])
-
-# write the selected options
-st.write("You cook with", len(Cook_With)) 
 # slider
 
 # first argument takes the title of the slider
@@ -294,21 +281,95 @@ else:
 
 #Diet
 if Diet == "Omnivore":
-      diet_encode =
+      diet_encode = 0
+elif Diet == "Pescatarian":
+      diet_encode = 1
+elif Diet == "Vegetarian":
+      diet_encode = 3
+#vegan
+else:
+      diet_encode = 2
 
-#recycling 
-#recycling_encode = 1 if Recyc ==  '[Glass]'
+if How_often_shower == "Daily":
+      howOftenShower_encode = 0
+elif How_often_shower == "Less Frequently":
+      howOftenShower_encode = 1
+elif How_often_shower == "More Frequently":
+      howOftenShower_encode = 2
+#twice a day
+else:
+      howOftenShower_encode = 3
+#heating source
+if Heating == "Coal":
+      heating_encode = 0
+elif Heating == "Natural Gas":
+      heating_encode = 2
+elif Heating == "Wood":
+      heating_encode = 3
+#elecricity 
+else:
+      heating_encode = 1
+#Transport
+if Trans == "Public":
+      transport_encode = 1
+elif Trans == "Walk/Bicycle":
+      transport_encode = 2
+#private
+else:
+      transport_encode = 0
 
-st.write('Predicted Carbon Emission: ', )
+#Social activity
+if Social == "Often":
+      socialAct_encode = 1
+elif Social == "Never":
+      socialAct_encode = 0
+#sometimes
+      socialAct_encode = 2
 
-predicted_carbon_emission=linear_model.predict([['Body Type', 'Sex', 'Diet', 'How Often Shower', 'Heating Energy Source',
+#Frequency of traveling by air
+if Air == "Frequently":
+      travelingByAir_encode = 0
+elif Air == "Rarely":
+      travelingByAir_encode = 2
+elif Air == "Never":
+      travelingByAir_encode = 1
+#very frequently
+else:
+      travelingByAir_encode = 3
+
+#waste bag size 
+if Waste == "Large":
+      wasteBag_encode = 1
+elif Waste == "Extra Large":
+      wasteBag_encode = 0
+elif Waste == "Small":
+      wasteBag_encode = 3
+#medium
+else:
+      wasteBag_encode = 2
+
+#energy efficiency
+if EnergyEff == "No":
+      energyEfficiency_encode = 0
+elif EnergyEff == "Sometimes":
+      energyEfficiency_encode = 1
+#yes
+else:
+      energyEfficiency_encode = 2
+
+
+
+predicted_carbon_emission_transformed = linear_model.predict([['Body Type', 'Sex', 'Diet', 'How Often Shower', 'Heating Energy Source',
        'Transport', 'Social Activity', 'Monthly Grocery Bill',
        'Frequency of Traveling by Air', 'Vehicle Monthly Distance Km',
        'Waste Bag Size', 'Waste Bag Weekly Count', 'How Long TV PC Daily Hour',
        'How Many New Clothes Monthly', 'How Long Internet Daily Hour',
-       'Energy efficiency', 'Recycling', 'Cooking_With',
-       'bodyType_numerical', 'sex_numerical', 'diet_numerical',
-       'how_often_shower_numerical', 'heating_numerical',
-       'transport_numerical', 'socialAct_numerical',
-       'energy efficiency_ numerical', 'travelingByAir_numerical',
-       'recycling_numerical', 'wasteBag_numerical', 'cookingWith_numerical']])
+       'Energy efficiency', 'CarbonEmission', 'travelingByAir_encode',
+       'howOftenShower_encode', 'heating_encode', 'bodytype_encode',
+       'sex_encode', 'diet_encode', 'transport_encode', 'socialAct_encode',
+       'energyEfficiency_encode', 'wasteBag_encode',
+       'carbonEmission_transform']])
+
+predicted_CE = inv_boxcox(predicted_carbon_emission_transformed, lambda_value)
+
+st.write('Predicted Carbon Emission: ',round(predicted_CE[0].0) )
