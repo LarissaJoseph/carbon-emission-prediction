@@ -1,10 +1,10 @@
 import streamlit as st
+from streamlit.logger import get_logger
 import pandas as pd
 import math
 from pathlib import Path
 import seaborn as sns
 import numpy as np
-import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 from scipy import stats
 from sklearn import metrics
@@ -260,7 +260,7 @@ y_pred = linear_model.predict(X_test)
 
 st.write('Predict your own Carbon Emission')
 
-df
+#df
 
 #Body Type
 if  Body_Type== "underweight":
@@ -370,6 +370,6 @@ predicted_carbon_emission_transformed = linear_model.predict([['Body Type', 'Sex
        'energyEfficiency_encode', 'wasteBag_encode',
        'carbonEmission_transform']])
 
-predicted_CE = inv_boxcox(predicted_carbon_emission_transformed, lambda_value)
+predicted_CE = inv_boxcox(predicted_carbon_emission_transformed)
 
 st.write('Predicted Carbon Emission: ',round(predicted_CE[0].0) )
