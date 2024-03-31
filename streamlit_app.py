@@ -232,9 +232,11 @@ st.write(df)
 
 #deleting the column that has missing values
 df. __delitem__('Vehicle Type')
+df. __delitem__('Recycling')
+df. __delitem__('Cooking_With')
 
 # Encode(changing categorical values to numerical values)
-df['recycling_encode'] = LabelEncoder().fit_transform(df['Recycling'])
+#df['recycling_encode'] = LabelEncoder().fit_transform(df['Recycling'])
 df['travelingByAir_encode'] = LabelEncoder().fit_transform(df['Frequency of Traveling by Air'])
 df['howOftenShower_encode'] = LabelEncoder().fit_transform(df['How Often Shower'])
 df['heating_encode'] = LabelEncoder().fit_transform(df['Heating Energy Source'])
@@ -245,7 +247,7 @@ df['transport_encode'] = LabelEncoder().fit_transform(df['Transport'])
 df['socialAct_encode'] = LabelEncoder().fit_transform(df['Social Activity'])
 df['energyEfficiency_encode'] = LabelEncoder().fit_transform(df['Energy efficiency'])
 df['wasteBag_encode'] = LabelEncoder().fit_transform(df['Waste Bag Size'])
-df['cookingWith_encode'] = LabelEncoder().fit_transform(df['Cooking_With'])
+#df['cookingWith_encode'] = LabelEncoder().fit_transform(df['Cooking_With'])
 # Transform the 'carbon emission' variable using Box-Cox transformation
 df['carbonEmission_transform'] = stats.boxcox(df['CarbonEmission'])[0]
 
@@ -253,7 +255,7 @@ df['carbonEmission_transform'] = stats.boxcox(df['CarbonEmission'])[0]
 X = df.drop(['Body Type', 'Sex', 'Diet', 'How Often Shower', 'Heating Energy Source',
        'Transport', 'Social Activity',
        'Frequency of Traveling by Air',
-       'Waste Bag Size','Energy efficiency', 'Recycling', 'Cooking_With', 'CarbonEmission',
+       'Waste Bag Size','Energy efficiency','CarbonEmission',
              'carbonEmission_transform'], axis=1)
 y = df['carbonEmission_transform']
 
@@ -275,20 +277,24 @@ df
 
 #Body Type
 if  Body_Type== "underweight":
-	bodytype_encode = 0
+	bodytype_encode = 3
 elif Body_Type== "normal":
-    bodytype_encode = 1
+    bodytype_encode = 0
 elif Body_Type== "overweight":
     bodytype_encode = 2
    #for obese
 else:
-    bodytype_encode = 3
+    bodytype_encode = 1
 
 #Sex    
 if status == "Male":
       sex_encode=1
 else:
       sex_encode=0
+
+#Diet
+if Diet == "Omnivore":
+      diet_encode =
 
 #recycling 
 #recycling_encode = 1 if Recyc ==  '[Glass]'
@@ -306,4 +312,3 @@ predicted_carbon_emission=linear_model.predict([['Body Type', 'Sex', 'Diet', 'Ho
        'transport_numerical', 'socialAct_numerical',
        'energy efficiency_ numerical', 'travelingByAir_numerical',
        'recycling_numerical', 'wasteBag_numerical', 'cookingWith_numerical']])
-jhjh
