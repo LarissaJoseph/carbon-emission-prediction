@@ -266,14 +266,14 @@ def run():
       predicted_carbon_emission_transformed = linear_model.predict(input_data)
       #predicted_CE = inv_boxcox(predicted_carbon_emission_transformed, stats.boxcox(df['CarbonEmission'])[1])
 
-      '''predicted_carbon_emission_transformed = linear_model.predict([['Monthly Grocery Bill',
-            'Vehicle Monthly Distance Km',
-            'Waste Bag Weekly Count', 'How Long TV PC Daily Hour',
-            'How Many New Clothes Monthly', 'How Long Internet Daily Hour',
-            'travelingByAir_encode',
-            'howOftenShower_encode', 'heating_encode', 'bodytype_encode',
-            'sex_encode', 'diet_encode', 'transport_encode', 'socialAct_encode',
-            'energyEfficiency_encode', 'wasteBag_encode']])'''
+      #predicted_carbon_emission_transformed = linear_model.predict([['Monthly Grocery Bill',
+            #'Vehicle Monthly Distance Km',
+            #'Waste Bag Weekly Count', 'How Long TV PC Daily Hour',
+            #'How Many New Clothes Monthly', 'How Long Internet Daily Hour',
+            #'travelingByAir_encode',
+            #'howOftenShower_encode', 'heating_encode', 'bodytype_encode',
+            #'sex_encode', 'diet_encode', 'transport_encode', 'socialAct_encode',
+            #'energyEfficiency_encode', 'wasteBag_encode']])
 
       predicted_CE = inv_boxcox(predicted_carbon_emission_transformed,stats.boxcox(df['CarbonEmission'])[1])
 
