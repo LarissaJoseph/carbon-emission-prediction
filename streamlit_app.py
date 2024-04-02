@@ -216,16 +216,16 @@ def run():
 
       # Encode(changing categorical values to numerical values)
       #df['recycling_encode'] = LabelEncoder().fit_transform(df['Recycling'])
-      df['travelingByAir_encode'] = LabelEncoder().fit_transform(df['Air'])
-      df['howOftenShower_encode'] = LabelEncoder().fit_transform(df['How_often_shower'])
-      df['heating_encode'] = LabelEncoder().fit_transform(df['Heating'])
-      df['bodytype_encode'] = LabelEncoder().fit_transform(df['Body_Type'])
+      df['travelingByAir_encode'] = LabelEncoder().fit_transform(df['Frequency of Traveling by Air'])
+      df['howOftenShower_encode'] = LabelEncoder().fit_transform(df['How Often Shower'])
+      df['heating_encode'] = LabelEncoder().fit_transform(df['Heating Energy Source'])
+      df['bodytype_encode'] = LabelEncoder().fit_transform(df['Body Type'])
       df['sex_encode'] = LabelEncoder().fit_transform(df['Sex'])
       df['diet_encode'] = LabelEncoder().fit_transform(df['Diet'])
-      df['transport_encode'] = LabelEncoder().fit_transform(df['Trans'])
-      df['socialAct_encode'] = LabelEncoder().fit_transform(df['Social'])
-      df['energyEfficiency_encode'] = LabelEncoder().fit_transform(df['EnergyEff'])
-      df['wasteBag_encode'] = LabelEncoder().fit_transform(df['Waste_Size'])
+      df['transport_encode'] = LabelEncoder().fit_transform(df['Transport'])
+      df['socialAct_encode'] = LabelEncoder().fit_transform(df['Social Activity'])
+      df['energyEfficiency_encode'] = LabelEncoder().fit_transform(df['Energy efficiency'])
+      df['wasteBag_encode'] = LabelEncoder().fit_transform(df['Waste Bag Size'])
       #df['cookingWith_encode'] = LabelEncoder().fit_transform(df['Cooking_With'])
       # Transform the 'carbon emission' variable using Box-Cox transformation
       df['carbonEmission_transform'] = stats.boxcox(df['CarbonEmission'])[0]
@@ -251,6 +251,7 @@ def run():
 
       st.write('Predict your own Carbon Emission')
 
+      
 
       
       predicted_carbon_emission_transformed = linear_model.predict([['Monthly Grocery Bill',
