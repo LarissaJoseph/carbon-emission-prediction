@@ -251,19 +251,31 @@ def run():
 
       st.write('Predict your own Carbon Emission')
 
-      
+      input_data = [[Bill, Car_Dist, Waste, How_longtv, Newclothes, Internet,
+                   df['travelingByAir_encode'].mode()[0],
+                   df['howOftenShower_encode'].mode()[0],
+                   df['heating_encode'].mode()[0],
+                   df['bodytype_encode'].mode()[0],
+                   df['sex_encode'].mode()[0],
+                   df['diet_encode'].mode()[0],
+                   df['transport_encode'].mode()[0],
+                   df['socialAct_encode'].mode()[0],
+                   df['energyEfficiency_encode'].mode()[0],
+                   df['wasteBag_encode'].mode()[0]]]
 
-      
-      predicted_carbon_emission_transformed = linear_model.predict([['Monthly Grocery Bill',
+      predicted_carbon_emission_transformed = linear_model.predict(input_data)
+      #predicted_CE = inv_boxcox(predicted_carbon_emission_transformed, stats.boxcox(df['CarbonEmission'])[1])
+
+      '''predicted_carbon_emission_transformed = linear_model.predict([['Monthly Grocery Bill',
             'Vehicle Monthly Distance Km',
             'Waste Bag Weekly Count', 'How Long TV PC Daily Hour',
             'How Many New Clothes Monthly', 'How Long Internet Daily Hour',
             'travelingByAir_encode',
             'howOftenShower_encode', 'heating_encode', 'bodytype_encode',
             'sex_encode', 'diet_encode', 'transport_encode', 'socialAct_encode',
-            'energyEfficiency_encode', 'wasteBag_encode']])
+            'energyEfficiency_encode', 'wasteBag_encode']])'''
 
-      predicted_CE = inv_boxcox(predicted_carbon_emission_transformed)
+      predicted_CE = inv_boxcox(predicted_carbon_emission_transformed,stats.boxcox(df['CarbonEmission'])[1])
 
       st.write('Predicted Carbon Emission: ',round(predicted_CE[0], 0))
 
