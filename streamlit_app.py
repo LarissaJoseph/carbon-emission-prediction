@@ -199,22 +199,12 @@ def run():
 
 
 
-      # -----------------------------------------------------------------------------
-      # Declare some useful functions.
-
-      #@st.cache_data
-      #def get_data():
-
-
-
-
       #deleting the column that has missing values
       df. __delitem__('Vehicle Type')
       df. __delitem__('Recycling')
       df. __delitem__('Cooking_With')
 
       # Encode(changing categorical values to numerical values)
-      #df['recycling_encode'] = LabelEncoder().fit_transform(df['Recycling'])
       df['travelingByAir_encode'] = LabelEncoder().fit_transform(df['Frequency of Traveling by Air'])
       df['howOftenShower_encode'] = LabelEncoder().fit_transform(df['How Often Shower'])
       df['heating_encode'] = LabelEncoder().fit_transform(df['Heating Energy Source'])
@@ -225,8 +215,9 @@ def run():
       df['socialAct_encode'] = LabelEncoder().fit_transform(df['Social Activity'])
       df['energyEfficiency_encode'] = LabelEncoder().fit_transform(df['Energy efficiency'])
       df['wasteBag_encode'] = LabelEncoder().fit_transform(df['Waste Bag Size'])
-      #df['cookingWith_encode'] = LabelEncoder().fit_transform(df['Cooking_With'])
+      
       # Transform the 'carbon emission' variable using Box-Cox transformation
+
       df['carbonEmission_transform'] = stats.boxcox(df['CarbonEmission'])[0]
 
      
@@ -261,6 +252,8 @@ def run():
                    df['socialAct_encode'].mode()[0],
                    df['energyEfficiency_encode'].mode()[0],
                    df['wasteBag_encode'].mode()[0]]]
+
+
 
       predicted_carbon_emission_transformed = linear_model.predict(input_data)
       #predicted_CE = inv_boxcox(predicted_carbon_emission_transformed, stats.boxcox(df['CarbonEmission'])[1])
