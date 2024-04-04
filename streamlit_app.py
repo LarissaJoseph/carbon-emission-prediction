@@ -217,16 +217,16 @@ def run():
       df['wasteBag_encode'] = LabelEncoder().fit_transform(df['Waste Bag Size'])
       df['carbonEmission_transform'] = stats.boxcox(df['CarbonEmission'])[0]
 
-      travelingByAir_encode= int(LabelEncoder().fit_transform([Air])[0])
-      howOftenShower_encode= LabelEncoder().fit_transform([How_often_shower])[0]
-      heating_encode= LabelEncoder().fit_transform([Heating])[0]
-      bodytype_encode= LabelEncoder().fit_transform([Body_Type])[0]
-      sex_encode= LabelEncoder().fit_transform([Body_Type])[0]
-      diet_encode= LabelEncoder().fit_transform([Body_Type])[0]
-      transport_encode= LabelEncoder().fit_transform([Body_Type])[0]
-      socialAct_encode= LabelEncoder().fit_transform([Body_Type])[0]
-      energyEfficiency_encode= LabelEncoder().fit_transform([Body_Type])[0]
-      wasteBag_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      #travelingByAir_encode= LabelEncoder().fit_transform([Air])[0]
+      #howOftenShower_encode= LabelEncoder().fit_transform([How_often_shower])[0]
+      #heating_encode= LabelEncoder().fit_transform([Heating])[0]
+      #bodytype_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      #sex_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      #diet_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      #transport_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      #socialAct_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      #energyEfficiency_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      #wasteBag_encode= LabelEncoder().fit_transform([Body_Type])[0]
 
       #Frequency of traveling by air
       if Air == "Frequently":
