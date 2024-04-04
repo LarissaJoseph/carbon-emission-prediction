@@ -315,7 +315,7 @@ def run():
       #yes
       else:
             energyEfficiency_encode = 2
-            
+
       #waste bag size 
       if Waste == "Large":
             wasteBag_encode = 1
@@ -327,7 +327,7 @@ def run():
       else:
             wasteBag_encode = 2
 
-
+      df
 
 
       
