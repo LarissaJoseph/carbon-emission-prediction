@@ -262,11 +262,11 @@ def run():
             heating_encode = 1
 
        #Body Type
-      if  Body_Type== "underweight":
+      if  Body_Type== "Underweight":
             bodytype_encode = 3
-      elif Body_Type== "normal":
+      elif Body_Type== "Normal":
             bodytype_encode = 0
-      elif Body_Type== "overweight":
+      elif Body_Type== "Overweight":
             bodytype_encode = 2
       #for obese
       else:
@@ -305,6 +305,7 @@ def run():
       elif Social == "Never":
             socialAct_encode = 0
       #sometimes
+      else:
             socialAct_encode = 2
 
       #energy efficiency
@@ -317,11 +318,11 @@ def run():
             energyEfficiency_encode = 2
 
       #waste bag size 
-      if Waste == "Large":
+      if Waste_Size == "Large":
             wasteBag_encode = 1
-      elif Waste == "Extra Large":
+      elif Waste_Size == "Extra Large":
             wasteBag_encode = 0
-      elif Waste == "Small":
+      elif Waste_Size == "Small":
             wasteBag_encode = 3
       #medium
       else:
