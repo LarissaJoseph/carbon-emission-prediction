@@ -197,9 +197,6 @@ def run():
       st.text('Selected: {}$'.format(Bill), )
 
 
-      
-
-
       #deleting the column that has missing values
       #df. __delitem__('Vehicle Type')
       #df. __delitem__('Recycling')
@@ -220,31 +217,38 @@ def run():
       df['wasteBag_encode'] = LabelEncoder().fit_transform(df['Waste Bag Size'])
       df['carbonEmission_transform'] = stats.boxcox(df['CarbonEmission'])[0]
 
+      travelingByAir_encode= LabelEncoder().fit_transform([Air])[0]
+      howOftenShower_encode= LabelEncoder().fit_transform([How_often_shower])[0]
+      heating_encode= LabelEncoder().fit_transform([Heating])[0]
+      bodytype_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      sex_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      diet_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      transport_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      socialAct_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      energyEfficiency_encode= LabelEncoder().fit_transform([Body_Type])[0]
+      wasteBag_encode= LabelEncoder().fit_transform([Body_Type])[0]
 
-
+      df
+      
       #input_data = [[Bill, Car_Dist, Waste, How_longtv, Newclothes, Internet,
-                   ##df['travelingByAir_encode'].mode()[0],
-                   #df['howOftenShower_encode'].mode()[0],
-                   #df['heating_encode'].mode()[0],
-                   #df['bodytype_encode'].mode()[0],
-                   #df['sex_encode'].mode()[0],
-                   #df['diet_encode'].mode()[0],
-                   #df['transport_encode'].mode()[0],
-                   #df['socialAct_encode'].mode()[0],
-                   #df['energyEfficiency_encode'].mode()[0],
-                   #df['wasteBag_encode'].mode()[0]]]
-
+                  #LabelEncoder().fit_transform([Air])[0],
+                   #LabelEncoder().fit_transform([How_often_shower])[0],
+                   #LabelEncoder().fit_transform([Heating])[0],
+                   #LabelEncoder().fit_transform([Body_Type])[0],
+                   #LabelEncoder().fit_transform([Sex])[0],
+                   #LabelEncoder().fit_transform([Diet])[0],
+                   #LabelEncoder().fit_transform([Trans])[0],
+                   #LabelEncoder().fit_transform([Social])[0],
+                   #LabelEncoder().fit_transform([EnergyEff])[0],
+                   #LabelEncoder().fit_transform([Waste_Size])[0]]]
+      
       input_data = [[Bill, Car_Dist, Waste, How_longtv, Newclothes, Internet,
-                   LabelEncoder().fit_transform([Air])[0],
-                   LabelEncoder().fit_transform([How_often_shower])[0],
-                   LabelEncoder().fit_transform([Heating])[0],
-                   LabelEncoder().fit_transform([Body_Type])[0],
-                   LabelEncoder().fit_transform([Sex])[0],
-                   LabelEncoder().fit_transform([Diet])[0],
-                   LabelEncoder().fit_transform([Trans])[0],
-                   LabelEncoder().fit_transform([Social])[0],
-                   LabelEncoder().fit_transform([EnergyEff])[0],
-                   LabelEncoder().fit_transform([Waste_Size])[0]]]
+                  travelingByAir_encode,howOftenShower_encode,heating_encode,bodytype_encode,
+                  sex_encode,diet_encode,transport_encode,socialAct_encode,
+                  energyEfficiency_encode,wasteBag_encode]]
+      input_data
+      
+      
       
       # Define X (features) and y (target) and remove duplicate features that will not be used in the model
       X = df.drop(['Body Type', 'Sex', 'Diet', 'How Often Shower', 'Heating Energy Source',
@@ -265,18 +269,13 @@ def run():
       predicted_carbon_emission_transformed = linear_model.predict(input_data)
       #predicted_CE = inv_boxcox(predicted_carbon_emission_transformed, stats.boxcox(df['CarbonEmission'])[1])
 
-      #predicted_carbon_emission_transformed = linear_model.predict([['Monthly Grocery Bill',
-            #'Vehicle Monthly Distance Km',
-            #'Waste Bag Weekly Count', 'How Long TV PC Daily Hour',
-            #'How Many New Clothes Monthly', 'How Long Internet Daily Hour',
-            #'travelingByAir_encode',
-            #'howOftenShower_encode', 'heating_encode', 'bodytype_encode',
-            #'sex_encode', 'diet_encode', 'transport_encode', 'socialAct_encode',
-            #'energyEfficiency_encode', 'wasteBag_encode']])
+
 
       predicted_CE = inv_boxcox(predicted_carbon_emission_transformed,stats.boxcox(df['CarbonEmission'])[1])
 
       st.write('Predicted Carbon Emission: ',round(predicted_CE[0], 0))
+
+      
 
 if __name__== "__main__":
            run()
