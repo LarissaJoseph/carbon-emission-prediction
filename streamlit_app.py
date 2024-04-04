@@ -272,7 +272,7 @@ def run():
                   travelingByAir_encode,howOftenShower_encode,heating_encode,bodytype_encode,
                   sex_encode,diet_encode,transport_encode,socialAct_encode,
                   energyEfficiency_encode,wasteBag_encode]]
-      input_data
+      
       
       
       
