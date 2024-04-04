@@ -217,7 +217,7 @@ def run():
       df['wasteBag_encode'] = LabelEncoder().fit_transform(df['Waste Bag Size'])
       df['carbonEmission_transform'] = stats.boxcox(df['CarbonEmission'])[0]
 
-      travelingByAir_encode= LabelEncoder().fit_transform([Air])[0]
+      travelingByAir_encode= int(LabelEncoder().fit_transform([Air])[0])
       howOftenShower_encode= LabelEncoder().fit_transform([How_often_shower])[0]
       heating_encode= LabelEncoder().fit_transform([Heating])[0]
       bodytype_encode= LabelEncoder().fit_transform([Body_Type])[0]
@@ -228,33 +228,17 @@ def run():
       energyEfficiency_encode= LabelEncoder().fit_transform([Body_Type])[0]
       wasteBag_encode= LabelEncoder().fit_transform([Body_Type])[0]
 
-      #Sex    
-      if Sex == "Male":
-            sex_encode=1
+      #Frequency of traveling by air
+      if Air == "Frequently":
+            travelingByAir_encode = 0
+      elif Air == "Rarely":
+            travelingByAir_encode = 2
+      elif Air == "Never":
+            travelingByAir_encode = 1
+      #very frequently
       else:
-            sex_encode=0
-
-      #Body Type
-      if  Body_Type== "underweight":
-            bodytype_encode = 3
-      elif Body_Type== "normal":
-            bodytype_encode = 0
-      elif Body_Type== "overweight":
-            bodytype_encode = 2
-      #for obese
-      else:
-            bodytype_encode = 1
-            #Diet
-      if Diet == "Omnivore":
-            diet_encode = 0
-      elif Diet == "Pescatarian":
-            diet_encode = 1
-      elif Diet == "Vegetarian":
-            diet_encode = 3
-      #vegan
-      else:
-            diet_encode = 2
-
+            travelingByAir_encode = 3
+      
       #shower
       if How_often_shower == "Daily":
             howOftenShower_encode = 0
@@ -266,7 +250,7 @@ def run():
       else:
             howOftenShower_encode = 3
 
-            #heating source
+       #heating source
       if Heating == "Coal":
             heating_encode = 0
       elif Heating == "Natural Gas":
@@ -276,6 +260,35 @@ def run():
       #elecricity 
       else:
             heating_encode = 1
+
+       #Body Type
+      if  Body_Type== "underweight":
+            bodytype_encode = 3
+      elif Body_Type== "normal":
+            bodytype_encode = 0
+      elif Body_Type== "overweight":
+            bodytype_encode = 2
+      #for obese
+      else:
+            bodytype_encode = 1
+      
+      #Sex    
+      if Sex == "Male":
+            sex_encode=1
+      else:
+            sex_encode=0
+
+     
+      #Diet
+      if Diet == "Omnivore":
+            diet_encode = 0
+      elif Diet == "Pescatarian":
+            diet_encode = 1
+      elif Diet == "Vegetarian":
+            diet_encode = 3
+      #vegan
+      else:
+            diet_encode = 2
 
       #Transport
       if Trans == "Public":
@@ -294,17 +307,15 @@ def run():
       #sometimes
             socialAct_encode = 2
 
-      #Frequency of traveling by air
-      if Air == "Frequently":
-            travelingByAir_encode = 0
-      elif Air == "Rarely":
-            travelingByAir_encode = 2
-      elif Air == "Never":
-            travelingByAir_encode = 1
-      #very frequently
+      #energy efficiency
+      if EnergyEff == "No":
+            energyEfficiency_encode = 0
+      elif EnergyEff == "Sometimes":
+            energyEfficiency_encode = 1
+      #yes
       else:
-            travelingByAir_encode = 3
-
+            energyEfficiency_encode = 2
+            
       #waste bag size 
       if Waste == "Large":
             wasteBag_encode = 1
@@ -316,14 +327,7 @@ def run():
       else:
             wasteBag_encode = 2
 
-      #energy efficiency
-      if EnergyEff == "No":
-            energyEfficiency_encode = 0
-      elif EnergyEff == "Sometimes":
-            energyEfficiency_encode = 1
-      #yes
-      else:
-            energyEfficiency_encode = 2
+
 
 
       
