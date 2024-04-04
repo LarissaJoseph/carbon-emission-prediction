@@ -25,6 +25,7 @@ def run():
       )
       st.write('# Carbon Emission Predictor App')
       st.subheader('Predict your own Carbon Emission')
+      st.write('(Carbon emission in kg per year)')
       csv_url = './Carbon_Emission.csv'
       df = pd.read_csv(csv_url)
       
