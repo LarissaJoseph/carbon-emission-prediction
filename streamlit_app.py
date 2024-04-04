@@ -327,7 +327,7 @@ def run():
       else:
             wasteBag_encode = 2
 
-      df
+      
 
 
       
