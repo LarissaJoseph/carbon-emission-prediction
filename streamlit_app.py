@@ -1,21 +1,21 @@
 import streamlit as st
-from streamlit.logger import get_logger
+#from streamlit.logger import get_logger
 import pandas as pd
-import math
-from pathlib import Path
-import seaborn as sns
-import numpy as np
-import matplotlib.pyplot as plt
+#import math
+#from pathlib import Path
+#import seaborn as sns
+#import numpy as np
+#import matplotlib.pyplot as plt
 from scipy import stats
-from sklearn import metrics
-from sklearn.cluster import KMeans
-from sklearn.linear_model import LinearRegression, LogisticRegression
+#from sklearn import metrics
+#from sklearn.cluster import KMeans
+from sklearn.linear_model import LinearRegression#, LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from scipy.special import inv_boxcox
-from scipy.stats import boxcox_normplot
+#from scipy.stats import boxcox_normplot
 
-LOGGER = get_logger(__name__)
+#LOGGER = get_logger(__name__)
 
 
 def run():
@@ -24,7 +24,7 @@ def run():
       page_icon=':earth_americas:',	
       )# This is an emoji shortcode. Could be a URL too.
       st.write('# Carbon Emission Predictor App')
-      st.subheader('Raw data')
+      st.subheader('Predict your own Carbon Emission')
       csv_url = './Carbon_Emission.csv'
       df = pd.read_csv(csv_url)
       
@@ -197,13 +197,16 @@ def run():
       st.text('Selected: {}$'.format(Bill), )
 
 
+      
 
 
       #deleting the column that has missing values
-      df. __delitem__('Vehicle Type')
-      df. __delitem__('Recycling')
-      df. __delitem__('Cooking_With')
+      #df. __delitem__('Vehicle Type')
+      #df. __delitem__('Recycling')
+      #df. __delitem__('Cooking_With')
 
+      df = df.drop(['Vehicle Type', 'Recycling', 'Cooking_With'], axis=1)
+      
       # Encode(changing categorical values to numerical values)
       df['travelingByAir_encode'] = LabelEncoder().fit_transform(df['Frequency of Traveling by Air'])
       df['howOftenShower_encode'] = LabelEncoder().fit_transform(df['How Often Shower'])
@@ -215,13 +218,34 @@ def run():
       df['socialAct_encode'] = LabelEncoder().fit_transform(df['Social Activity'])
       df['energyEfficiency_encode'] = LabelEncoder().fit_transform(df['Energy efficiency'])
       df['wasteBag_encode'] = LabelEncoder().fit_transform(df['Waste Bag Size'])
-      
-      # Transform the 'carbon emission' variable using Box-Cox transformation
-
       df['carbonEmission_transform'] = stats.boxcox(df['CarbonEmission'])[0]
 
-     
-     
+
+
+      #input_data = [[Bill, Car_Dist, Waste, How_longtv, Newclothes, Internet,
+                   ##df['travelingByAir_encode'].mode()[0],
+                   #df['howOftenShower_encode'].mode()[0],
+                   #df['heating_encode'].mode()[0],
+                   #df['bodytype_encode'].mode()[0],
+                   #df['sex_encode'].mode()[0],
+                   #df['diet_encode'].mode()[0],
+                   #df['transport_encode'].mode()[0],
+                   #df['socialAct_encode'].mode()[0],
+                   #df['energyEfficiency_encode'].mode()[0],
+                   #df['wasteBag_encode'].mode()[0]]]
+
+      input_data = [[Bill, Car_Dist, Waste, How_longtv, Newclothes, Internet,
+                   LabelEncoder().fit_transform([Air])[0],
+                   LabelEncoder().fit_transform([How_often_shower])[0],
+                   LabelEncoder().fit_transform([Heating])[0],
+                   LabelEncoder().fit_transform([Body_Type])[0],
+                   LabelEncoder().fit_transform([Sex])[0],
+                   LabelEncoder().fit_transform([Diet])[0],
+                   LabelEncoder().fit_transform([Trans])[0],
+                   LabelEncoder().fit_transform([Social])[0],
+                   LabelEncoder().fit_transform([EnergyEff])[0],
+                   LabelEncoder().fit_transform([Waste_Size])[0]]]
+      
       # Define X (features) and y (target) and remove duplicate features that will not be used in the model
       X = df.drop(['Body Type', 'Sex', 'Diet', 'How Often Shower', 'Heating Energy Source',
             'Transport', 'Social Activity',
@@ -236,25 +260,8 @@ def run():
       # Instantiate a linear regression model
       linear_model = LinearRegression()
       linear_model.fit(X_train, y_train)
-      y_pred = linear_model.predict(X_test)
-
-
-      st.write('Predict your own Carbon Emission')
-
-      input_data = [[Bill, Car_Dist, Waste, How_longtv, Newclothes, Internet,
-                   df['travelingByAir_encode'].mode()[0],
-                   df['howOftenShower_encode'].mode()[0],
-                   df['heating_encode'].mode()[0],
-                   df['bodytype_encode'].mode()[0],
-                   df['sex_encode'].mode()[0],
-                   df['diet_encode'].mode()[0],
-                   df['transport_encode'].mode()[0],
-                   df['socialAct_encode'].mode()[0],
-                   df['energyEfficiency_encode'].mode()[0],
-                   df['wasteBag_encode'].mode()[0]]]
-
-
-
+      linear_model.predict(X_test)
+      
       predicted_carbon_emission_transformed = linear_model.predict(input_data)
       #predicted_CE = inv_boxcox(predicted_carbon_emission_transformed, stats.boxcox(df['CarbonEmission'])[1])
 
